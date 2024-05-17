@@ -6,6 +6,8 @@ It should works for all roms up to 32k, but there's no enough RAM on Pico to han
 
 **WARNING!** "purple" Pico has not the same pinout of original Raspberry "green" ones, you MUST use the clone or you may damage your hardware.
 
+**COOMING SOON:** Any Colecovision shell could be used, but i'll publish here the 3D model for DIY printing in next days!
+
 ![ScreenShot](https://raw.githubusercontent.com/aotta/PiCOLECO/main/Pictures/picocv1.jpg)
 ![ScreenShot](https://raw.githubusercontent.com/aotta/PiCOLECO/main/Pictures/picocv2.jpg)
 
