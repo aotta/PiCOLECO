@@ -15,6 +15,7 @@ After flashed with firmware, and every time you have to change your ROMS reposit
 
 More info on AtariAge forum: https://forums.atariage.com/topic/366660-picoleco-a-diy-multicart-for-colecovision/
 
+
 Even if the diode should protect your console, **DO NOT CONNECT PICO WHILE INSERTED IN A POWERED ON CONSOLE!**
 
 
