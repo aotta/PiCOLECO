@@ -17,7 +17,6 @@ More info on AtariAge forum: https://forums.atariage.com/topic/366660-picoleco-a
 
 Even if the diode should protect your console, **DO NOT CONNECT PICO WHILE INSERTED IN A POWERED ON CONSOLE!**
 
-![ScreenShot](https://raw.githubusercontent.com/aotta/SD-1000/main/Pictures/sega1.jpg)
 
 ## Credits
 Thank to Robin Robin Edwards and his A8PicoCart (https://github.com/robinhedwards/A8PicoCart), i found very smart his way to manage the Flash RAM and the USB updates, so i admit i took large parte of his code for it!.
