@@ -1,0 +1,6 @@
+Comment,Designator,Footprint,LCSC
+CVS-Card,X1,Coleco_Expansion_Card,
+SW_Push,SW1,SW_PUSH_6mm,
+Conn_01x20,J2,PinSocket_1x20_P2.54mm_Vertical,
+Conn_01x20,J1,PinSocket_1x20_P2.54mm_Vertical,
+Diode ,D1,D_DO-35_SOD27_P7.62mm_Horizontal,

@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "KiCAD")(type "KiCad")(uri "C:/Users/Andrea/Documents/Retrocomputer/Colecovision/FlashCard/ColecoVision_Reprogrammable_Flash_Card-main/KiCAD")(options "")(descr ""))
+)

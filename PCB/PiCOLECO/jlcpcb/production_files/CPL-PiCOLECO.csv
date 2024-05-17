@@ -1,0 +1,6 @@
+Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+D1,Diode ,D_DO-35_SOD27_P7.62mm_Horizontal,114.125,-103.725,90.0,top
+J1,Conn_01x20,PinSocket_1x20_P2.54mm_Vertical,85.6,-97.515,0.0,top
+J2,Conn_01x20,PinSocket_1x20_P2.54mm_Vertical,103.375,-97.515,0.0,top
+SW1,SW_Push,SW_PUSH_6mm,113.125,-75.9,0.0,top
+X1,CVS-Card,Coleco_Expansion_Card,99.0727,-150.00345,0.0,top
