@@ -223,25 +223,29 @@ void __not_in_flash_func(core1_main()) {
 ////////////////////////////////////////////////////////////////////////////////////    
 
 void reset() {
-  
-  while (((gpio_get_all() & FLAG_MASK)>>FCE0_PIN)!=0b1111);
-  SET_DATA_MODE_OUT;
-  gpio_put_masked(DATA_PIN_MASK,0xc7<<16);
-  sleep_ms(30);
-  //SET_DATA_MODE_IN;
-  
-  while (((gpio_get_all() & FLAG_MASK)>>FCE0_PIN)!=0b1111);
-  SET_DATA_MODE_OUT;
-  gpio_put_masked(DATA_PIN_MASK,0xc7<<16);
-  sleep_ms(30);
-  //SET_DATA_MODE_IN;
-  
-  while (((gpio_get_all() & FLAG_MASK)>>FCE0_PIN)!=0b1111);
-  SET_DATA_MODE_OUT;
-  gpio_put_masked(DATA_PIN_MASK,0xc7<<16);
-  sleep_ms(30);
+   
+ //multicore_lockout_start_blocking();	
 
+  while (((gpio_get_all() & FLAG_MASK)>>FCE0_PIN)!=0b1111);
+  SET_DATA_MODE_OUT;
+  gpio_put_masked(DATA_PIN_MASK,0xc7<<16);
+  sleep_ms(30);
   SET_DATA_MODE_IN;
+
+  while (((gpio_get_all() & FLAG_MASK)>>FCE0_PIN)!=0b1111);
+  SET_DATA_MODE_OUT;
+  gpio_put_masked(DATA_PIN_MASK,0xc7<<16);
+  sleep_ms(30);
+  SET_DATA_MODE_IN;
+  
+  //multicore_lockout_end_blocking();
+/*
+  while (((gpio_get_all() & FLAG_MASK)>>FCE0_PIN)!=0b1111);
+  SET_DATA_MODE_OUT;
+  gpio_put_masked(DATA_PIN_MASK,0xc7<<16);
+  sleep_ms(3);
+  SET_DATA_MODE_IN;
+*/
 
 
 }       
@@ -475,9 +479,10 @@ void filelist(DIR_ENTRY* en,int da, int a)
 		memset(longfilename,0,32);
 	
 	 	if (en[n+da].isDir) {
-			strcpy(longfilename,"DIR->");
+			strcpy(longfilename,"[");
 			ROM[7100+n]=1;
 			strcat(longfilename, en[n+da].long_filename);
+			strcat(longfilename, "]");		
 	 	} else {
 			ROM[7100+n]=0;
 			strcpy(longfilename, en[n+da].long_filename);
@@ -593,9 +598,10 @@ void LoadGame(){
 		memcpy(ROM,files,sizeof(ROM));
   		gamechoosen=0;
 		reset(); 
-		sleep_ms(200);
-		reset();
-		reset(); // just to be sure
+	
+	//	sleep_ms(200);
+	//	reset();
+	//	reset(); // just to be sure
 		
        while(1);    
   }
@@ -640,9 +646,9 @@ void coleco_cart_main()
   ROM[0xf000]=0; // POI VIA    
 
   multicore_launch_core1(core1_main);
-  sleep_ms(400);
+  sleep_ms(200);
   reset();
-  sleep_ms(400);
+  sleep_ms(200);
  
 
   while(ROM[0xf000]==0);  
@@ -662,7 +668,6 @@ void coleco_cart_main()
 	    ROM[0xf000]=0;
     	ROM[5999]=0;
         colecoMenu(1);
-		//sleep_ms(600);
 	 	ROM[5999]=1;
       	break;
       case 2:  // run file list
@@ -670,7 +675,6 @@ void coleco_cart_main()
     	ROM[0xf000]=0;
 		ROM[5999]=0;
 	 	LoadGame();
-		//sleep_ms(600);
 		ROM[5999]=1;
       	break;
       case 3:  // next page
@@ -679,7 +683,6 @@ void coleco_cart_main()
     	ROM[0xf000]=0;
 		ROM[5999]=0;
      	colecoMenu(2);
-		//sleep_ms(600);
 		ROM[5999]=1;
       	break;
       case 4:  // prev page
@@ -687,7 +690,6 @@ void coleco_cart_main()
     	ROM[0xf000]=0;
 		ROM[5999]=0;
      	colecoMenu(3);
-		//sleep_ms(600);
 		ROM[5999]=1;
       	break;
 	  case 5:  // up dir
@@ -695,7 +697,6 @@ void coleco_cart_main()
     	ROM[0xf000]=0;
 		ROM[5999]=0;
       	DirUp();
-		//sleep_ms(600);
 		colecoMenu(1);
 		ROM[5999]=1;
       	break;
