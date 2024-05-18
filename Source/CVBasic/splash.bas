@@ -105,7 +105,7 @@ newdir:
    numfile=1
    numfileold=0
  scegli:
-   for c=1 to 10
+   for c=1 to 6
      WAIT
    next c 
    
@@ -155,7 +155,7 @@ nextpage:
    poke $8000+5999,0 ' wait for goto
    poke $f003,3 ' next page
    print at 32*23,"--> Next DIR"
-   for i=0 to 40:wait:next i
+   for i=0 to 15:wait:next i
    while peek($8000+5999)<>1:wend
  
    goto newdir
@@ -163,7 +163,7 @@ nextpage:
 prevpage:
    poke $f004,4 ' prev page
    print at 32*23,"--> Prev DIR"
-   for i=0 to 40:wait:next i
+   for i=0 to 15:wait:next i
    while peek($8000+5999)<>1:wend
    
    goto newdir
@@ -171,7 +171,7 @@ prevpage:
 updir:
    poke $f005,5 ' up Dir
    print at 32*23,"--> Up DIR"
-   for i=0 to 40:wait:next i
+   for i=0 to 15:wait:next i
    while peek($8000+5999)<>1:wend
    goto newdir
 
@@ -181,7 +181,7 @@ rungame:
   poke $f002,2 ' run file
   if peek($8000+7100+numfile-1)=1 then  ' is opendir
   print at 32*23,"--> Open DIR"
-  for i=0 to 40:wait:next i
+  for i=0 to 15:wait:next i
   while peek($8000+5999)<>1:wend
   goto newdir
   end IF
