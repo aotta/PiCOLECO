@@ -1,6 +1,8 @@
 # PiCOLECO
 Colecovision flash multicart based on Pico clone
 
+**NEW** version 1.0a uploaded with partial support for Megacart switch banking roms up to 128kb
+
 PiCOLECO is a multicart DIY yourself based on cheap "purple" Raspberry Pi Pico clone.
 It should works for all roms up to 32k, but there's no enough RAM on Pico to handle 128k or larger multirom.
 
