@@ -1,7 +1,7 @@
 	'
-	' Test for multiplication/division/modulo/READ/DATA (for CVBasic)
+	' PicolecoMenu by Andrea Ottaviani
 	'
-	' by Oscar Toledo G.
+	' written in CVBasic by Oscar Toledo G.
 	' https://nanochess.org/
 	'
 	' Creation date: Feb/29/2024.
