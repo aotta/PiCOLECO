@@ -2,6 +2,7 @@
 Colecovision flash multicart based on Pico clone
 
 **NEW** version 1.0a uploaded with partial support for Megacart switch banking roms up to 128kb
+
 version 1.0c uploaded (fixed sprite bug in Pac-Man Compilation), porting to SDK 2.2 in progress
 
 PiCOLECO is a multicart DIY yourself based on cheap "purple" Raspberry Pi Pico clone.
