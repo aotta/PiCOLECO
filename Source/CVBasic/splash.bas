@@ -1,7 +1,7 @@
 	'
-	' PicolecoMenu by Andrea Ottaviani
+	' Test for multiplication/division/modulo/READ/DATA (for CVBasic)
 	'
-	' written in CVBasic by Oscar Toledo G.
+	' by Oscar Toledo G.
 	' https://nanochess.org/
 	'
 	' Creation date: Feb/29/2024.
@@ -12,7 +12,7 @@
 	DEFINE VRAM PLETTER $0000,$1800,image_bitmap
 	DEFINE VRAM PLETTER $2000,$1800,image_color
 	SCREEN ENABLE
-
+    
   
 loop:
 	GOSUB reset_sound
@@ -67,7 +67,7 @@ inizio:
 newdir:
    cls
    BORDER 4
-   print at 34+7,"PiCOLECO v.1.0"
+   print at 34+7,"PiCOLECO v.1.0d"
   
    VPOKE $1800,130
    FOR c= 1 TO 30
@@ -105,7 +105,7 @@ newdir:
    numfile=1
    numfileold=0
  scegli:
-   for c=1 to 6
+   for c=1 to 10
      WAIT
    next c 
    
@@ -131,22 +131,22 @@ newdir:
   ' print at 32*23+22,"of:"
   ' print at 32*23+25,nf
    
-  c=cont1
+  c=cont
   while c=0
 	wait 
-	c=cont1  
-	'print at 32*23+20,c 
+	c=cont  
+    'print at 32*23+20,c 
  WEND
   sound 0,120,5
   WAIT
   sound 0,0,0 
   
-   if (c and 128) then goto updir
-   if (c and 64) then goto rungame
-   if (c and 8)  THEN goto prevpage
-   if (c and 4) and (numfile<totfile) THEN numfileold=numfile:numfile=numfile+1:goto scegli
-   if (c and 2)  THEN goto nextpage
-   if (c=1) and (numfile>1) THEN numfileold=numfile:numfile=numfile-1:goto scegli
+   if (c=cont.button2) then goto updir
+   if (c=cont.button) then goto rungame
+   if (c=cont.left)  THEN goto prevpage
+   if (c=cont.down) and (numfile<totfile) THEN numfileold=numfile:numfile=numfile+1:goto scegli
+   if (c=cont.right)  THEN goto nextpage
+   if (c=cont.up) and (numfile>1) THEN numfileold=numfile:numfile=numfile-1:goto scegli
 
    c=0
    goto scegli
@@ -155,7 +155,7 @@ nextpage:
    poke $8000+5999,0 ' wait for goto
    poke $f003,3 ' next page
    print at 32*23,"--> Next DIR"
-   for i=0 to 15:wait:next i
+   for i=0 to 40:wait:next i
    while peek($8000+5999)<>1:wend
  
    goto newdir
@@ -163,7 +163,7 @@ nextpage:
 prevpage:
    poke $f004,4 ' prev page
    print at 32*23,"--> Prev DIR"
-   for i=0 to 15:wait:next i
+   for i=0 to 40:wait:next i
    while peek($8000+5999)<>1:wend
    
    goto newdir
@@ -171,7 +171,7 @@ prevpage:
 updir:
    poke $f005,5 ' up Dir
    print at 32*23,"--> Up DIR"
-   for i=0 to 15:wait:next i
+   for i=0 to 40:wait:next i
    while peek($8000+5999)<>1:wend
    goto newdir
 
@@ -181,7 +181,7 @@ rungame:
   poke $f002,2 ' run file
   if peek($8000+7100+numfile-1)=1 then  ' is opendir
   print at 32*23,"--> Open DIR"
-  for i=0 to 15:wait:next i
+  for i=0 to 40:wait:next i
   while peek($8000+5999)<>1:wend
   goto newdir
   end IF
